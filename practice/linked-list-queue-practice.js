@@ -32,6 +32,14 @@ class SinglyLinkedList {
     listLength() {
         // Returns the length of the list
         // Implement in O(n) and in O(1) time complexity
+        let count = 0;
+        let current = this.head;
+
+        while(current) {
+            count = count +1;
+            current = current.next;
+        }
+        return count;
     }
 
     sumOfNodes() {
