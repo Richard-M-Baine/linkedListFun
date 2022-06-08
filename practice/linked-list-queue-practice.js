@@ -44,6 +44,16 @@ class SinglyLinkedList {
 
     sumOfNodes() {
         // Returns the sum of the values of all the nodes
+        let sum = 0;
+        if (!this.head){
+            return sum
+        }
+        let current = this.head
+        while (current){
+            sum = sum + current.value
+            current = current.next
+        }
+        return sum
 
         // Write your hypothesis on the time complexity of this method here
     }
