@@ -144,24 +144,20 @@ class SinglyLinkedList {
     }
 
     reverseInPlace() {
-        // Reverses the linked list in-place
-        if (!this.head) return this;
-
-        let current = this.head;
-
-        let prev;
-        while(current.next) {
-            prev = current;
-            [current.prev, current.next] = [current.next, current.prev];
-            current = prev;
-            // console.log(current);
-            // console.log(current.value);
-        }
-        this.head = current;
-        this.head.next =prev;
-        return this;
 
         // Write your hypothesis on the time complexity of this method here
+            if (!this.head) return this;
+            let curr = this.head;
+            let next = curr.next;
+            let prev = null;
+            while (next) {
+              next = curr.next;
+              curr.next = prev;
+              prev = curr;
+              curr = next;
+            }
+            this.head = prev;
+            return this;
     }
 }
 
