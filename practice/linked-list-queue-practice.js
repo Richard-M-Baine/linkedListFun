@@ -33,10 +33,12 @@ class SinglyLinkedList {
         // Returns the length of the list
         // Implement in O(n) and in O(1) time complexity
         let count = 0;
+        if (this.head === null){return count}
         let current = this.head;
 
-        while(current) {
-            count = count +1;
+        count ++
+        while(current.next) {
+            count++;
             current = current.next;
         }
         return count;
@@ -97,12 +99,24 @@ class SinglyLinkedList {
     }
 
     findMid() {
+        let current = this.head
+        let middle = Math.floor(this.listLength() / 2)
+        let count = 0
+        while (count < middle && current){
+            if (count < 0)return null;
+            current = current.next
+            count++
+        }
+        if (true)return current;
+        return null;
+
+    }
         // Returns the middle node
         // Implement this as a singly linked list then as a doubly linked list
-            // How do the implementation for singly and doubly vary if at all?
+        //     How do the implementation for singly and doubly vary if at all?
 
         // Write your hypothesis on the time complexity of this method here
-    }
+
 
     reverse() {
         // Returns a new reversed version of the linked list
