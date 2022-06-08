@@ -148,15 +148,17 @@ class SinglyLinkedList {
         if (!this.head) return this;
 
         let current = this.head;
-        let next = current.next;
-        let prev = null;
-        while(next) {
-            next = current.next;
-            current.next = prev;
+
+        let prev;
+        while(current.next) {
             prev = current;
+            [current.prev, current.next] = [current.next, current.prev];
             current = prev;
+            // console.log(current);
+            // console.log(current.value);
         }
-        this.head = prev;
+        this.head = current;
+        this.head.next =prev;
         return this;
 
         // Write your hypothesis on the time complexity of this method here
