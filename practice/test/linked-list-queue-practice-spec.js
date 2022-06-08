@@ -71,7 +71,7 @@ describe('Part 2: Linked Lists', () => {
     list.addToTail(5);
     list.addToTail(6);
 
-    expect(list.findMid().value).to.equal(4); // cheated should be 3????
+    expect(list.findMid().value).to.equal(3); // cheated should be 3????
   });
 
 

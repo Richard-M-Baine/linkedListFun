@@ -11,6 +11,19 @@ class SinglyLinkedList {
     constructor(head = null) {
         this.head = head;
     }
+    addToHead(val) {
+        // step 1: create new Node with the val passed in
+        const newVal = new SinglyLinkedNode(val);
+
+        // step 2: Set new Node's next pointer to point at the current head
+        newVal.next = this.head;
+
+        // step 3: make the new Head the new Node
+        this.head = newVal;
+
+        // step 4: Increment the length
+        this.length++;
+      }
 
     addToTail(val) {
         let newNode = new SinglyLinkedNode(val);
@@ -100,32 +113,51 @@ class SinglyLinkedList {
 
     findMid() {
         let current = this.head
-        let middle = Math.floor(this.listLength() / 2)
+        const middle = (this.listLength() % 2 === 0) ? (this.listLength() / 2) - 1 : Math.floor(this.listLength() / 2);
         let count = 0
         while (count < middle && current){
             if (count < 0)return null;
             current = current.next
             count++
         }
-        if (true)return current;
+        if (count === middle && current)return current;
         return null;
 
     }
         // Returns the middle node
         // Implement this as a singly linked list then as a doubly linked list
         //     How do the implementation for singly and doubly vary if at all?
-
         // Write your hypothesis on the time complexity of this method here
 
 
     reverse() {
         // Returns a new reversed version of the linked list
-
         // Write your hypothesis on the time complexity of this method here
+        const newList = new SinglyLinkedList()
+        let current = this.head;
+
+        while (current) {
+            newList.addToHead(current.value);
+            current = current.next;
+        }
+        return newList;
     }
 
     reverseInPlace() {
         // Reverses the linked list in-place
+        if (!this.head) return this;
+
+        let current = this.head;
+        let next = current.next;
+        let prev = null;
+        while(next) {
+            next = current.next;
+            current.next = prev;
+            prev = current;
+            current = prev;
+        }
+        this.head = prev;
+        return this;
 
         // Write your hypothesis on the time complexity of this method here
     }
