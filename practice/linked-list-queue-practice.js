@@ -59,7 +59,24 @@ class SinglyLinkedList {
     }
 
     averageValue() {
+
+        if (!this.head) return 0;
+        return this.sumOfNodes() / this.listLength();
         // Returns the average value of all the nodes
+
+            // another way:
+        // let sum = 0;
+        // let count = 0;
+
+        // if(!this.head) return sum;
+
+        // let current = this.head;
+        // while (current) {
+        //     sum = sum + current.value;
+        //     count = count + 1;
+        //     current = current.next;
+        // }
+        // return sum / count;
 
         // Write your hypothesis on the time complexity of this method here
     }
